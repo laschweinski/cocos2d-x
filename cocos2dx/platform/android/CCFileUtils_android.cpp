@@ -66,13 +66,14 @@ unsigned char* CCFileUtils::getFileData(const char* pszFileName, const char* psz
 {	
 	unsigned char * pData = 0;
 	string fullPath(pszFileName);
+	fullPath = "/sdcard/HeroBattle/Resource/"+ string(pszFileName);
 
 	if ((! pszFileName) || (! pszMode))
 	{
 		return 0;
 	}
 
-	if (pszFileName[0] != '/')
+	if (fullPath.c_str()[0] != '/')
 	{
 		// read from apk
 		fullPath.insert(0, "assets/");
@@ -83,7 +84,7 @@ unsigned char* CCFileUtils::getFileData(const char* pszFileName, const char* psz
 		do 
 		{
 			// read rrom other path than user set it
-			FILE *fp = fopen(pszFileName, pszMode);
+			FILE *fp = fopen(fullPath.c_str(), pszMode);
 			CC_BREAK_IF(!fp);
 
 			unsigned long size;

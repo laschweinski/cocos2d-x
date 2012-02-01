@@ -33,7 +33,11 @@ NS_CC_BEGIN;
 struct CC_DLL cc_timeval
 {
     long	tv_sec;		// seconds
+#if (__MACH__!=1)
     long	tv_usec;    // microSeconds
+#else
+    int     tv_usec;
+#endif
 };
 
 class CC_DLL CCTime

@@ -23,9 +23,11 @@ void CCFileUtils::setResourcePath(const char* pszResourcePath) {
 
 //	s_strResourcePath = pszResourcePath;
 	/* Sets current directory */
-	if(chdir(pszResourcePath) < 0)
+	int result = chdir(pszResourcePath);
+
+	if(result < 0)
 	{
-		CCLog("set base folder error");
+		CCLog("set base folder error %s %d", pszResourcePath, result);
 	}
 }
 

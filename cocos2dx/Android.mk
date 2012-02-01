@@ -127,4 +127,4 @@ LOCAL_LDLIBS := -L$(call host-path, $(LOCAL_PATH)/platform/third_party/android/l
 # define the macro to compile through support/zip_support/ioapi.c                
 LOCAL_CFLAGS := -DUSE_FILE32API
                                  
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)

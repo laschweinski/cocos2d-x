@@ -18,6 +18,7 @@
 #include "CCTouchDispatcher.h"
 #include "CCIMEDispatcher.h"
 
+#if (__MACH__!=1)
 PFNGLGENFRAMEBUFFERSEXTPROC glGenFramebuffersEXT = NULL;
 PFNGLDELETEFRAMEBUFFERSEXTPROC glDeleteFramebuffersEXT = NULL;
 PFNGLBINDFRAMEBUFFEREXTPROC glBindFramebufferEXT = NULL;
@@ -30,6 +31,7 @@ PFNGLBINDBUFFERARBPROC glBindBufferARB = NULL;
 PFNGLBUFFERDATAARBPROC glBufferDataARB = NULL;
 PFNGLBUFFERSUBDATAARBPROC glBufferSubDataARB = NULL;
 PFNGLDELETEBUFFERSARBPROC glDeleteBuffersARB = NULL;
+
 
 bool initExtensions() {
 #define LOAD_EXTENSION_FUNCTION(TYPE, FN)  FN = (TYPE)glfwGetProcAddress(#FN);
@@ -76,6 +78,13 @@ bool initExtensions() {
 	} while (0);
 	return bRet;
 }
+
+#else
+bool initExtensions() {
+	return true;
+}
+#endif
+
 
 NS_CC_BEGIN;
 static CCEGLView* s_pMainWindow = NULL;

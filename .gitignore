@@ -5,6 +5,9 @@ Thumbs.db
 *.obj
 *.exe
 *.pdb
+*.d
+*.mk
+*.o
 *.aps
 *.vcproj.*.user
 *.vspscc
@@ -34,8 +37,6 @@ bin/
 obj/
 assets/
 .classpath
-.project
-.cproject
 
 # Ignore files build by linux
 *.o

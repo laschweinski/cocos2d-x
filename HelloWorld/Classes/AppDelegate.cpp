@@ -65,9 +65,12 @@ bool AppDelegate::initInstance() {
 		CCEGLView * pMainWnd = new CCEGLView();
 		CC_BREAK_IF(! pMainWnd
 				|| ! pMainWnd->Create("cocos2d: Hello World", 800, 480,480, 320));
-
+#if(__MACH__==1)
+		CCFileUtils::setResourcePath("../../Resource/");
+#else
+		//set the base resource folder pay attention to add "/"
 		CCFileUtils::setResourcePath("../Resource/");
-
+#endif
 #endif  // CC_PLATFORM_LINUX
 		bRet = true;
 	} while (0);

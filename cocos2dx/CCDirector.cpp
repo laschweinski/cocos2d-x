@@ -60,7 +60,7 @@ THE SOFTWARE.
 
 using namespace std;
 using namespace cocos2d;
-namespace  cocos2d 
+namespace  cocos2d
 {
 
 // singleton stuff
@@ -91,7 +91,7 @@ bool CCDirector::init(void)
 
 	m_pNotificationNode = NULL;
 
-	m_dOldAnimationInterval = m_dAnimationInterval = 1.0 / kDefaultFPS;	
+	m_dOldAnimationInterval = m_dAnimationInterval = 1.0 / kDefaultFPS;
 	m_pobScenesStack = new CCMutableArray<CCScene*>();
 
 	// Set default projection (3D)
@@ -108,19 +108,19 @@ bool CCDirector::init(void)
 
 	// paused ?
 	m_bPaused = false;
-	
+
 	// purge ?
 	m_bPurgeDirecotorInNextLoop = false;
 
 	m_obWinSizeInPixels = m_obWinSizeInPoints = CCSizeZero;
 
 	// portrait mode default
-	m_eDeviceOrientation = CCDeviceOrientationPortrait;		
+	m_eDeviceOrientation = CCDeviceOrientationPortrait;
 
 	m_pobOpenGLView = NULL;
 
     m_bRetinaDisplay = false;
-    m_fContentScaleFactor = 1;	
+    m_fContentScaleFactor = 1;
 	m_bIsContentScaleSupported = false;
 
 	// create autorelease pool
@@ -128,7 +128,7 @@ bool CCDirector::init(void)
 
 	return true;
 }
-	
+
 CCDirector::~CCDirector(void)
 {
 	CCLOGINFO("cocos2d: deallocing %p", this);
@@ -136,7 +136,7 @@ CCDirector::~CCDirector(void)
 #if CC_DIRECTOR_FAST_FPS
 	CC_SAFE_RELEASE(m_pFPSLabel);
 #endif 
-    
+
 	CC_SAFE_RELEASE(m_pRunningScene);
 	CC_SAFE_RELEASE(m_pNotificationNode);
 	CC_SAFE_RELEASE(m_pobScenesStack);
@@ -311,41 +311,41 @@ void CCDirector::setProjection(ccDirectorProjection kProjection)
 	switch (kProjection)
 	{
 	case kCCDirectorProjection2D:
-        if (m_pobOpenGLView) 
+        if (m_pobOpenGLView)
         {
             m_pobOpenGLView->setViewPortInPoints(0, 0, size.width, size.height);
         }
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		ccglOrtho(0, size.width, 0, size.height, -1024 * CC_CONTENT_SCALE_FACTOR(), 
+		ccglOrtho(0, size.width, 0, size.height, -1024 * CC_CONTENT_SCALE_FACTOR(),
 			1024 * CC_CONTENT_SCALE_FACTOR());
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 		break;
 
-	case kCCDirectorProjection3D:		
-        if (m_pobOpenGLView) 
+	case kCCDirectorProjection3D:
+        if (m_pobOpenGLView)
         {
             m_pobOpenGLView->setViewPortInPoints(0, 0, size.width, size.height);
         }
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		gluPerspective(60, (GLfloat)size.width/size.height, 0.5f, 1500.0f);
-			
-		glMatrixMode(GL_MODELVIEW);	
+
+		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 		gluLookAt( size.width/2, size.height/2, zeye,
 				 size.width/2, size.height/2, 0,
-				 0.0f, 1.0f, 0.0f);				
+				 0.0f, 1.0f, 0.0f);
 		break;
-			
+
 	case kCCDirectorProjectionCustom:
 		if (m_pProjectionDelegate)
 		{
 			m_pProjectionDelegate->updateProjection();
 		}
 		break;
-			
+
 	default:
 		CCLOG("cocos2d: Director: unrecognized projecgtion");
 		break;
@@ -362,7 +362,7 @@ void CCDirector::purgeCachedData(void)
 
 float CCDirector::getZEye(void)
 {
-    return (m_obWinSizeInPixels.height / 1.1566f);	
+    return (m_obWinSizeInPixels.height / 1.1566f);
 }
 
 void CCDirector::setAlphaBlending(bool bOn)
@@ -417,7 +417,7 @@ CCPoint CCDirector::convertToGL(const CCPoint& obPoint)
 		ret.y = newX;
 		break;
 	}
-	
+
 	return ret;
 }
 
@@ -545,7 +545,7 @@ void CCDirector::end()
 {
 	m_bPurgeDirecotorInNextLoop = true;
 }
-	
+
 void CCDirector::purgeDirector()
 {
 	// don't release the event handlers
@@ -558,7 +558,7 @@ void CCDirector::purgeDirector()
     	m_pRunningScene->cleanup();
     	m_pRunningScene->release();
     }
-    
+
 	m_pRunningScene = NULL;
 	m_pNextScene = NULL;
 
@@ -583,7 +583,7 @@ void CCDirector::purgeDirector()
 	CCActionManager::sharedManager()->purgeSharedManager();
 	CCScheduler::purgeSharedScheduler();
 	CCTextureCache::purgeSharedTextureCache();
-	
+
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_AIRPLAY)	
 	CCUserDefault::purgeSharedUserDefault();
 #endif
@@ -610,7 +610,7 @@ void CCDirector::setNextScene(void)
          {
              m_pRunningScene->onExit();
          }
- 
+
  		// issue #709. the root node (scene) should receive the cleanup message too
  		// otherwise it might be leaked.
  		if (m_bSendCleanupToScene && m_pRunningScene)
@@ -886,9 +886,9 @@ void CCDisplayLinkDirector::mainLoop(void)
 	else if (! m_bInvalid)
  	{
  		drawScene();
-	 
+
  		// release the objects
- 		CCPoolManager::getInstance()->pop();		
+ 		CCPoolManager::getInstance()->pop();
  	}
 }
 
@@ -904,7 +904,7 @@ void CCDisplayLinkDirector::setAnimationInterval(double dValue)
 	{
 		stopAnimation();
 		startAnimation();
-	}	
+	}
 }
 
 } //namespace   cocos2d 

@@ -1,6 +1,6 @@
 /****************************************************************************
 Copyright (c) 2010-2011 cocos2d-x.org
-Copyright (c) 2011		Максим Аксенов 
+Copyright (c) 2011		�邪泻�懈屑 �泻�械薪芯胁 
 Copyright (c) 2009-2010 Ricardo Quesada
 Copyright (c) 2011      Zynga Inc.
 
@@ -557,7 +557,7 @@ namespace cocos2d {
 				int inflatedLen = ZipUtils::ccInflateMemoryWithHint(buffer, len, &deflated, sizeHint);
 				assert(inflatedLen == sizeHint);
 
-				inflatedLen = (int)&inflatedLen; // XXX: to avoid warings in compiler
+				inflatedLen = (TMXInt)&inflatedLen; // XXX: to avoid warings in compiler
 				
 				delete [] buffer;
 				buffer = NULL;

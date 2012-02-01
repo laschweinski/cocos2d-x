@@ -56,6 +56,7 @@ THE SOFTWARE.
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include <GLES/gl.h>
+#define GL_GLEXT_PROTOTYPES
 #include <GLES/glext.h>
 #endif
 
@@ -70,24 +71,21 @@ THE SOFTWARE.
 #endif
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+#if (__MACH__ == 1)
+#include <gl.h>
+#include <glext.h>
+#else
 #include <GL/gl.h>
+#define GL_GLEXT_PROTOTYPES
 #include "GL/glext.h"
-
-//declare here while define in CCEGLView_linux.cpp
-extern PFNGLGENFRAMEBUFFERSEXTPROC         	glGenFramebuffersEXT;
-extern PFNGLDELETEFRAMEBUFFERSEXTPROC      	glDeleteFramebuffersEXT;
-extern PFNGLBINDFRAMEBUFFEREXTPROC         	glBindFramebufferEXT;
-extern PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC  	glCheckFramebufferStatusEXT;
-extern PFNGLFRAMEBUFFERTEXTURE2DEXTPROC    	glFramebufferTexture2DEXT;
-extern PFNGLGENERATEMIPMAPEXTPROC          	glGenerateMipmapEXT;
-
-extern PFNGLGENBUFFERSARBPROC 			   	glGenBuffersARB;
-extern PFNGLBINDBUFFERARBPROC 				glBindBufferARB;
-extern PFNGLBUFFERDATAARBPROC 				glBufferDataARB;
-extern PFNGLBUFFERSUBDATAARBPROC 			glBufferSubDataARB;
-extern PFNGLDELETEBUFFERSARBPROC 			glDeleteBuffersARB;
-
-
+#endif
+//GLAPI void APIENTRY glBindBuffer (GLenum target, GLuint buffer);
+//GLAPI void APIENTRY glDeleteBuffers (GLsizei n, const GLuint *buffers);
+//GLAPI void APIENTRY glGenBuffers (GLsizei n, GLuint *buffers);
+//GLAPI GLboolean APIENTRY glIsBuffer (GLuint buffer);
+//GLAPI void APIENTRY glBufferData (GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage);
+//GLAPI void APIENTRY glBufferSubData (GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data);
+//GLAPI void APIENTRY glGetBufferSubData (GLenum target, GLintptr offset, GLsizeiptr size, GLvoid *data);
 
 
 #undef ccglOrtho
@@ -115,15 +113,28 @@ extern PFNGLDELETEBUFFERSARBPROC 			glDeleteBuffersARB;
 #define ccglFramebufferTexture2D	glFramebufferTexture2DEXT
 #define ccglDeleteFramebuffers		glDeleteFramebuffersEXT
 #define ccglCheckFramebufferStatus	glCheckFramebufferStatusEXT
-
-
 #define glFrustumf                  glFrustum
+#if (__MACH__ != 1)
+//declare here while define in CCEGLView_linux.cpp
+extern PFNGLGENFRAMEBUFFERSEXTPROC         	glGenFramebuffersEXT;
+extern PFNGLDELETEFRAMEBUFFERSEXTPROC      	glDeleteFramebuffersEXT;
+extern PFNGLBINDFRAMEBUFFEREXTPROC         	glBindFramebufferEXT;
+extern PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC  	glCheckFramebufferStatusEXT;
+extern PFNGLFRAMEBUFFERTEXTURE2DEXTPROC    	glFramebufferTexture2DEXT;
+extern PFNGLGENERATEMIPMAPEXTPROC          	glGenerateMipmapEXT;
+
+extern PFNGLGENBUFFERSARBPROC 			   	glGenBuffersARB;
+extern PFNGLBINDBUFFERARBPROC 				glBindBufferARB;
+extern PFNGLBUFFERDATAARBPROC 				glBufferDataARB;
+extern PFNGLBUFFERSUBDATAARBPROC 			glBufferSubDataARB;
+extern PFNGLDELETEBUFFERSARBPROC 			glDeleteBuffersARB;
+
 #define glGenBuffers                glGenBuffersARB
 #define glBindBuffer                glBindBufferARB
 #define glBufferData                glBufferDataARB
 #define glBufferSubData             glBufferSubDataARB
 #define glDeleteBuffers             glDeleteBuffersARB
-
+#endif
 #define CC_GL_FRAMEBUFFER			GL_FRAMEBUFFER
 #define CC_GL_FRAMEBUFFER_BINDING	GL_FRAMEBUFFER_BINDING
 #define CC_GL_COLOR_ATTACHMENT0		GL_COLOR_ATTACHMENT0

@@ -27,7 +27,7 @@ THE SOFTWARE.
 #include "CCCommon.h"
 #include "CCStdC.h"
 #include "CCFileUtils.h"
-#include "png.h"
+#include "png_unix.h"
 #include <string>
 #include <ctype.h>
 
@@ -148,14 +148,7 @@ bool CCImage::_initWithJpgData(void * data, int nSize)
         /* this makes the library read from infile */
         //TODO in some linux release it use libjpeg62 which does not support jpeg_mem_src instead of libjpeg8
         // load memory data as stream
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-        FILE * source = fmemopen(data, nSize, "rb");
-        CC_BREAK_IF(!source);
-        jpeg_stdio_src(&cinfo, source);
-        fclose(source);
-#else
         jpeg_mem_src( &cinfo, (unsigned char *) data, nSize );
-#endif
 
         /* reading the image header which contains image information */
         jpeg_read_header( &cinfo, true );

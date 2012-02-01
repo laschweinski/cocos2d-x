@@ -1,8 +1,11 @@
 #include "CurlTest.h"
 #include "stdio.h"
 #include "stdlib.h"
+#if (__MACH__==1)
+#include "../../../cocos2dx/platform/third_party/mac/curl/curl.h"
+#else
 #include "curl/curl.h"
-
+#endif
 CurlTest::CurlTest()
 {
 	CCSize s = CCDirector::sharedDirector()->getWinSize();

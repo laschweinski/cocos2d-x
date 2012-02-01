@@ -392,11 +392,11 @@ namespace cocos2d {
 	unsigned int CCTMXLayer::atlasIndexForExistantZ(unsigned int z)
 	{
 		int key=z;
-		int *item = (int*)bsearch((void*)&key, (void*)&m_pAtlasIndexArray->arr[0], m_pAtlasIndexArray->num, sizeof(void*), compareInts);
+		TMXInt *item = (TMXInt *)bsearch((void*)&key, (void*)&m_pAtlasIndexArray->arr[0], m_pAtlasIndexArray->num, sizeof(void*), compareInts);
 
 		CCAssert( item, "TMX atlas index not found. Shall not happen");
 
-		int index = ((int)item - (int)m_pAtlasIndexArray->arr) / sizeof(void*);
+		int index = static_cast<int>((TMXInt)item - (TMXInt)m_pAtlasIndexArray->arr) / sizeof(void*);
 		return index;
 	}
 	unsigned int CCTMXLayer::atlasIndexForNewZ(int z)
@@ -405,7 +405,8 @@ namespace cocos2d {
 		unsigned int i=0;
 		for( i=0; i< m_pAtlasIndexArray->num ; i++) 
 		{
-			int val = (int) m_pAtlasIndexArray->arr[i];
+			long long sig1 = reinterpret_cast<long long> ( m_pAtlasIndexArray->arr[i] );
+			int val = static_cast<int>(sig1);
 			if( z < val )
 				break;
 		}	
@@ -472,7 +473,7 @@ namespace cocos2d {
 		CCAssert( m_pChildren->containsObject(sprite), "Tile does not belong to TMXLayer");
 
 		unsigned int atlasIndex = sprite->getAtlasIndex();
-		unsigned int zz = (unsigned int) m_pAtlasIndexArray->arr[atlasIndex];
+		TMXInt zz = (TMXInt) m_pAtlasIndexArray->arr[atlasIndex];
 		m_pTiles[zz] = 0;
 		ccCArrayRemoveValueAtIndex(m_pAtlasIndexArray, atlasIndex);
 		CCSpriteBatchNode::removeChild(sprite, cleanup);
