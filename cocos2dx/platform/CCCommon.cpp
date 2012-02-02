@@ -188,7 +188,7 @@ NS_CC_END;
 /****************************************************
  * linux
  ***************************************************/
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_UNIX)
 
 #include <stdio.h>
 #include "CCStdC.h"

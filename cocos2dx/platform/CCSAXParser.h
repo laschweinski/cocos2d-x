@@ -1,6 +1,6 @@
 /****************************************************************************
  Copyright (c) 2010 cocos2d-x.org  http://cocos2d-x.org
- Copyright (c) 2010 Максим Аксенов
+ Copyright (c) 2010 �邪泻�懈屑 �泻�械薪芯胁
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ NS_CC_BEGIN;
     (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)   || \
     (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID) || \
 	(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)     || \
-	(CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+	(CC_TARGET_PLATFORM == CC_PLATFORM_UNIX)
 typedef unsigned char CC_XML_CHAR;
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_AIRPLAY)
 typedef char CC_XML_CHAR;

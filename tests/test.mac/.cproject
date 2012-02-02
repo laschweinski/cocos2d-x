@@ -115,18 +115,14 @@
 							<tool id="cdt.managedbuild.tool.macosx.c.linker.macosx.base.1128580595" name="MacOS X C Linker" superClass="cdt.managedbuild.tool.macosx.c.linker.macosx.base"/>
 							<tool command="g++" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="org.eclipse.cdt.core.GLDErrorParser" id="cdt.managedbuild.tool.macosx.cpp.linker.macosx.base.472687986" name="MacOS X C++ Linker" superClass="cdt.managedbuild.tool.macosx.cpp.linker.macosx.base">
 								<option id="macosx.cpp.link.option.libs.143073930" name="Libraries (-l)" superClass="macosx.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="curl"/>
 									<listOptionValue builtIn="false" value="cocos2d"/>
-									<listOptionValue builtIn="false" value="pthread"/>
-									<listOptionValue builtIn="false" value="ssl"/>
-									<listOptionValue builtIn="false" value="ldap"/>
-									<listOptionValue builtIn="false" value="crypto"/>
 									<listOptionValue builtIn="false" value="z"/>
 									<listOptionValue builtIn="false" value="cocosdenshion"/>
 								</option>
 								<option id="macosx.cpp.link.option.userobjs.1416727133" name="Other objects" superClass="macosx.cpp.link.option.userobjs" valueType="userObjs">
 									<listOptionValue builtIn="false" value="&quot;../../../chipmunk/proj.mac/${ConfigName}/libchipmunk.a&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;../../../Box2D/proj.mac/${ConfigName}/libBox2D.a&quot;"/>
-									<listOptionValue builtIn="false" value="../../../cocos2dx/platform/third_party/mac/libraries/libcurl.a"/>
 								</option>
 								<option id="macosx.cpp.link.option.paths.135931498" name="Library search path (-L)" superClass="macosx.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;../../../cocos2dx/proj.mac/${ConfigName}&quot;"/>

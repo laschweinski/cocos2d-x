@@ -24,7 +24,7 @@ THE SOFTWARE.
 #include "CCUserDefault.h"
 #include "platform/CCFileUtils.h"
 
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_UNIX)
 #include <libxml/parser.h>
 #include <libxml/tree.h>
 //#else

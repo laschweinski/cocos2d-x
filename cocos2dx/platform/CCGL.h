@@ -70,7 +70,7 @@ THE SOFTWARE.
 #include <GLES/glext.h>
 #endif
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_UNIX)
 #if (__MACH__ == 1)
 #include <gl.h>
 #include <glext.h>

@@ -58,7 +58,7 @@ bool AppDelegate::initInstance() {
 		// MaxAksenov said it's NOT a very elegant solution. I agree, haha
 		CCDirector::sharedDirector()->setDeviceOrientation(kCCDeviceOrientationLandscapeLeft);
 #endif
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_UNIX)
 
 		// Initialize OpenGLView instance, that release by CCDirector when application terminate.
 		// The HelloWorld is designed as HVGA.
@@ -71,7 +71,7 @@ bool AppDelegate::initInstance() {
 		//set the base resource folder pay attention to add "/"
 		CCFileUtils::setResourcePath("../Resource/");
 #endif
-#endif  // CC_PLATFORM_LINUX
+#endif  // CC_PLATFORM_UNIX
 		bRet = true;
 	} while (0);
 	return bRet;

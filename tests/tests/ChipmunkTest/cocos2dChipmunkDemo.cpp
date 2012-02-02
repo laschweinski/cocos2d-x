@@ -44,7 +44,7 @@
 
 #define SLEEP_TICKS 16
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_UNIX)
 
 #define glOrthof glOrtho
 #endif

@@ -37,7 +37,7 @@ THE SOFTWARE.
     #include "ios/CCEGLView_ios.h"
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_AIRPLAY)
 	#include "airplay/CCEGLView_airplay.h"
-#elif (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_UNIX)
 	#include "Linux/CCEGLView_linux.h"
 #else
     #error

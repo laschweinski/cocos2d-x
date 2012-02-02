@@ -36,7 +36,7 @@ THE SOFTWARE.
     #include "ios/CCAccelerometer_ios.h"
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_AIRPLAY)
 	#include "airplay/CCAccelerometer_airplay.h"
-#elif (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_UNIX)
 	#include "Linux/CCAccelerometer_linux.h"
 #else
     #error
