@@ -27,7 +27,11 @@ THE SOFTWARE.
 #include "CCCommon.h"
 #include "CCStdC.h"
 #include "CCFileUtils.h"
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_UNIX)
 #include "png_unix.h"
+#else
+#include "png.h"
+#endif
 #include <string>
 #include <ctype.h>
 
